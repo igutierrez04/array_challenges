@@ -42,20 +42,44 @@ console.log(result); // we expect back [6, 8, 10, 9]
 function betterThanAverage(arr) {
     var sum = 0;
     for(var i=0; i<arr.length; i++){
-        sum = sum + arr[i];
-        console.log(sum)
-        return sum;
+        sum += arr[i];
     }
-    var average = sum / arr.length;
-    var count = 0
-    if(average < arr[i]){
-        count++;
-        return count;
-    }
-
     // calculate the average
+    var average = sum / arr.length;
+    var count = 0;
 
     // count how many values are greated than the average
+    for(var i=0; i<arr.length; i++){
+        if(arr[i] > average){
+            count++;
+        }
+    }
+    return count;
+
 }
 var result = betterThanAverage([6, 8, 3, 10, -2, 5, 9]);
 console.log(result); // we expect back 4
+
+// 4. Array Reverse
+// Write a function that will reverse the values an array and return them.
+
+function reverse(arr) {
+    
+    // answer using built in JS function
+    // arr.reverse();
+
+    // your code here
+    var left = 0;
+    var right = arr.length - 1;
+    while(left < right){
+        var temp = arr[left];
+        arr[left] = arr[right];
+        arr[right] = temp;
+        left++;
+        right--;
+    }
+    return arr;
+}
+
+var result = reverse(["a", "b", "c", "d", "e"]);
+console.log(result); // we expect back ["e", "d", "c", "b", "a"]
